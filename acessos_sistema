@@ -1,0 +1,25 @@
+Acesso Admin ao Moodle senha (1234):
+
+    infatec - agamenon@4321
+
+Acesso WebService
+   webservice
+   123123123
+   d307ba34efa536a9227afd353af18112
+   http://localhost:8081/webservice/rest/server.php
+   http://localhost:8081/webservice/rest/server.php?wstoken=<TOKEN>&wsfunction=<FUNCAO>&moodlewsrestformat=<JSON>
+
+   http://localhost/CAPACITACOES/moodle/webservice/rest/server.php?wstoken=d307ba34efa536a9227afd353af18112&wsfunction=enrol_manual_enrol_users&moodlewsrestformat=json
+
+Acessos Sistema
+   Lívia Morgana - Apoio Logístico
+   Deys Araújo Santana - Apoio Pedagógico
+   Débora Santana - Apoio Administrativo
+   Heloisa Cardoso Varão - Palestrante
+   Marcia Torres - Palestrante
+   Agamenon Santacruz - Coordenador
+   Lara Santana - Apoio
+   Joseilson Morais - Apoio
+   Edean Sousa - Apoio
+   Luís Tadeu - Apoio
+   Mirlia Santana - Apoio

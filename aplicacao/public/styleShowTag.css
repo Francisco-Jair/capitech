@@ -1,0 +1,30 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    border:0px;
+    color: #005580;
+}
+
+
+body { font-family: verdana, arial, helvetica, sans-serif; font-size: 16px; }
+.barcode {
+    padding: 1.5mm;
+    margin: 0;
+    vertical-align: top;
+    color: #000044;
+}
+.barcodecell {
+    text-align: center;
+    vertical-align: middle;
+}
+table.moldura{
+    width: 2480px; height: 3508px !important;  margin:0 auto;
+    min-height:3508px !important;
+}
+
+strong {font-size:13px}
+.descricao { font-size:12px;}
+
+
+
+

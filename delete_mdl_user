@@ -1,0 +1,29 @@
+TRUNCATE frequencias;
+TRUNCATE api_falta_aluno_envio;
+TRUNCATE api_falta_aluno_sms;
+TRUNCATE log_atividades;
+TRUNCATE log_login;
+TRUNCATE log_login_errado;
+
+DELETE FROM mdl_user WHERE id > 49;
+DELETE FROM mdl_user_enrolments WHERE mdl_user_enrolments.userid > 49;
+DELETE FROM mdl_role_assignments WHERE mdl_role_assignments.userid > 49;
+DELETE FROM mdl_user_preferences WHERE mdl_user_preferences.userid > 49;
+DELETE FROM mdl_block_recent_activity WHERE mdl_block_recent_activity.userid > 49;
+
+
+
+DELETE FROM mdl_user WHERE id = 42;
+DELETE FROM mdl_user_enrolments WHERE mdl_user_enrolments.userid = 42;
+
+
+
+
+UPDATE `pege_caxias`.`servidor` SET `email`=NULL WHERE  `id`=1607;
+UPDATE `pege_caxias`.`servidor` SET `email`=NULL WHERE  `id`=1379;
+
+
+SET foreign_key_checks = 0;
+TRUNCATE aulas;
+TRUNCATE frequencias;
+SET foreign_key_checks = 1;

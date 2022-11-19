@@ -1,0 +1,50 @@
+.header-course { margin-bottom: 30px; }
+
+.content { margin-bottom: 25px; }
+
+.box-title-course { color: #339E9D; text-transform: uppercase; font-weight: bold; margin-bottom: 25px; }
+
+.timeline p { margin: 0; }
+.timeline ul li { margin: 0 0 10px; }
+.timeline a { cursor: pointer; }
+
+.calendar .table-bordered > tbody > tr > td,
+.calendar .table-bordered > tbody > tr > th,
+.calendar .table-bordered > tfoot > tr > td,
+.calendar .table-bordered > tfoot > tr > th,
+.calendar .table-bordered > thead > tr > td,
+.calendar .table-bordered > thead > tr > th,
+.calendar .table-bordered { border-color: #000; }
+.calendar table { margin: 0; }
+.calendar th { background: #FFCA05; }
+.calendar p { margin: 5px 0 20px; }
+.calendar .legenda .title { font-weight: bold; }
+.calendar .legenda p { font-size: 15px; margin: 0; }
+.calendar .legenda { margin-bottom: 30px; }
+.calendar .legenda .circle { padding: 8px 15px; border: 1px solid #DDD; border-radius: 100px; }
+.calendar .course-hours p {  margin: 0; font-weight: bold; }
+
+#event-carousel a { overflow: hidden; display: inline-block; height: 155px; cursor: zoom-in; }
+#event-carousel a img {  }
+#event-carousel .owl-nav { text-align: center; margin-top: 15px; }
+#event-carousel .owl-nav .owl-prev, #event-carousel .owl-nav .owl-next { display: inline-block; padding: 5px 15px; background: #EEE; color: #1A91A1; }
+#event-carousel .owl-nav .owl-prev { border-radius: 5px 0 0 5px; }
+#event-carousel .owl-nav .owl-next { border-radius: 0 5px 5px 0; }
+#event-carousel .owl-nav .owl-prev:hover, #event-carousel .owl-nav .owl-next:hover { background: #ff404b; color: #FFF; }
+
+.modal p { font-size: 16px; }
+
+/* md */
+@media only screen and (max-width:1199px)  {
+}
+
+/* sm */
+@media only screen and (max-width:991px)  {
+}
+
+/* xs */
+@media only screen and (max-width:767px)  {
+    .calendar .legenda .circle { display: block; }
+
+    #event-carousel a { height: auto; }
+}

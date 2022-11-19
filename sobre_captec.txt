@@ -1,0 +1,37 @@
+Sobre o CAPTEC
+
+1 - Site: sistemacaptec.com.br
+	-> É a área pública aberta a todos
+
+2 - AVA: ava.sistemacaptec.com.br
+	-> É a área onde:
+		- os cursistas podem intetagir com outros cursistas e professores através de 'Recursos e Atividades' que podem ser: chat, lição, fórum, pesquisa de opinião, tarefas entre outros.
+		- professores podem gerenciar seus cursos interagindo com os alunos através de vários 'Recursos e Atividades'
+		- os gestores do evento podem gerenciar o AVA (Criar cursos, cadastrar professores, visualizar todo e qualquer conteúdo/material referente aos cursistas e professores)
+	
+3 - Gestor: sistemacaptec.com.br/gestor
+	-> É a área onde gestores do evento poderão:
+		- Cadastrar/alterar alunos. No momento do cadastro do Aluno é automaticamente enturmado para a sala com menos alunos
+		- Gerar etiquetas em Lote no formato "A4 99,0 X 25,4" e "CARTA 25,4 X 101,6"
+		- Gerar certificados em Lote (Estamos pendente do modelo de certificado)
+		- Gerar etiquetas alvulsas no formato "A4 99,0 X 25,4" e "CARTA 25,4 X 101,6"
+		- Gerar certificados alvulsos (Estamos pendente do modelo de certificado)
+		- Manipular alteração de dados das aulas presenciais (Turma, Professor, Curso, Data)
+		- Realizar frequencia dos alunos
+		- Gerar Relatório de frequencia dos alunos por aula
+		- Gerar Relação de alunos por turma (Relatório)
+		- Gerar Relação de alunos com informações pendentes de atualização (Email e CPF) (Relatório)
+		- Gerar Relação de Professores (Relatório)
+		- Gerar Relação de aulas (Relatório)
+		- Gerar Relação geral de Alunos (Relatório com espaço para assinatura)
+		- Gerar Relatório de Frequencia geral do curso exibindo o aproveitamento relacionando Presenças X Faltas [Pendente de conclusão]
+		- Gerar Relatório de Frequencia diária das aulas exibindo o aproveitamento relacionando Presenças X Faltas [Pendente de conclusão]
+		- Relatório de avaliação dos alunos referente a cada dia de aula. [Pendente de conclusão].
+		- Relatório GERAL de avaliação dos alunos referente aos dias de aula. [Pendente de conclusão].
+
+4 - Aplicativo Mobile: https://play.google.com/store/apps/details?id=br.net.infatec.avamobileinfatec&hl=pt_BR
+	- Professor lança frequencia dos cursistas. Os cursistas que faltam recebem SMS
+	- Professor visualiza todos os seus alunos em uma relação única 
+	- Ao final de cada Aula, o professor entregará seu dispositivo para que cada aulo possa respoonder um questionário avaliativo do dia  [Pendente de conclusão]. 
+                
+                

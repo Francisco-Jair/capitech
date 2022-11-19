@@ -1,0 +1,116 @@
+#FROM 869076451876.dkr.ecr.eu-central-1.amazonaws.com/cdi_ainda-api-laravel8:latest
+FROM ubuntu:20.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install default packages
+RUN apt-get update \
+&& apt-get -y install zip curl git vim lsb-release nginx cron ssh telnet htop cmake m4 lzip supervisor ffmpeg  \
+php php-redis php7.4-readline php7.4-zip php7.4-fpm php7.4-bcmath php7.4-xml php7.4-mysql php7.4-mongodb php7.4-mbstring php-dev php-pear php7.4-curl php7.4-pgsql php7.4-gd  \
+libeigen3-dev libboost-all-dev libcgal-dev libmpfr-dev libomp-dev \
+build-essential fontconfig-config freetype2-demos  \
+php-imagick  \
+composer
+
+# Install imagick
+#RUN apt-get -y install php-imagick
+ADD ./scripts/imagick.sh /tmp/imagick.sh
+RUN chmod +x /tmp/imagick.sh && bash /tmp/imagick.sh
+
+# Install mongodb for php
+# RUN pecl install mongodb
+RUN mkdir -p /run/php
+
+# Install composer
+#RUN apt-get -y install composer
+#RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+#&& php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
+#&& php composer-setup.php \
+#&& php -r "unlink('composer-setup.php');"
+#
+#RUN mv /composer.phar /usr/local/bin/composer
+
+## Project Instruções ##
+
+#Set ENV APP:
+ENV APP_CDN=https://s3.eu-central-1.amazonaws.com/cdn.aindauniverse.com/logos/logo.svg
+
+WORKDIR /var/www/
+
+# Add config files / scripts
+RUN mkdir -p /root/scripts /root/configfiles /root/.ssh
+ADD ./scripts/docker-script-startup.sh /root/scripts/docker-script-startup.sh
+ADD ./scripts/artisan_config.sh /root/scripts/artisan_config.sh
+ADD ./ssh-keys/id_rsa /root/.ssh/id_rsa
+ADD ./ssh-keys/id_rsa.pub /root/.ssh/id_rsa.pub
+ADD ./configfiles/no-cors-nginx-site-config /etc/nginx/sites-available/default
+#ADD ./configfiles/cli/php.ini /etc/php/7.4/cli/php.ini
+#ADD ./configfiles/cli/php.ini.bkp /etc/php/7.4/cli/php.ini.bkp
+#ADD ./configfiles/fpm/php.ini /etc/php/7.4/fpm/php.ini
+#ADD ./configfiles/fpm/php.ini.bkp /etc/php/7.4/fpm/php.ini.bkp
+
+# ca-bundle for documentDB
+RUN mkdir -p /opt/certs && \
+wget https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem -O /opt/certs/rds-combined-ca-bundle.pem
+
+
+# PHP configs
+RUN sed -i 's,^upload_max_filesize =.*$,upload_max_filesize = 4096M,' /etc/php/7.4/cli/php.ini
+RUN sed -i 's,^upload_max_filesize =.*$,upload_max_filesize = 4096M,' /etc/php/7.4/fpm/php.ini
+RUN sed -i 's,^error_reporting =.*$,error_reporting = E_ALL \& \~E_STRICT,' /etc/php/7.4/cli/php.ini
+RUN sed -i 's,^error_reporting =.*$,error_reporting = E_ALL \& \~E_STRICT,' /etc/php/7.4/fpm/php.ini
+RUN sed -i 's,^post_max_size =.*$,post_max_size = 4096M,' /etc/php/7.4/cli/php.ini
+RUN sed -i 's,^post_max_size =.*$,post_max_size = 4096M,' /etc/php/7.4/fpm/php.ini
+RUN sed -i 's,^max_execution_time =.*$,max_execution_time = 200,' /etc/php/7.4/cli/php.ini
+RUN sed -i 's,^max_execution_time =.*$,max_execution_time = 200,' /etc/php/7.4/fpm/php.ini
+RUN sed -i 's,^max_input_time =.*$,max_input_time = 500,' /etc/php/7.4/cli/php.ini
+RUN sed -i 's,^max_input_time =.*$,max_input_time = 500,' /etc/php/7.4/fpm/php.ini
+RUN sed -i 's,^;max_input_vars =.*$,max_input_vars = 5000,' /etc/php/7.4/cli/php.ini
+RUN sed -i 's,^;max_input_vars =.*$,max_input_vars = 5000,' /etc/php/7.4/fpm/php.ini
+RUN sed -i 's,^max_file_uploads =.*$,max_file_uploads = 2000,' /etc/php/7.4/cli/php.ini
+RUN sed -i 's,^max_file_uploads =.*$,max_file_uploads = 2000,' /etc/php/7.4/fpm/php.ini
+# BoostMemory
+RUN sed -i 's,^memory_limit =.*$,memory_limit = 256M,' /etc/php/7.4/fpm/php.ini
+
+# Add Supervisor.conf
+COPY ./configfiles/supervisor/supervisord-api.conf /etc/supervisor/conf.d/supervisord.conf
+#COPY ./configfiles/supervisor/supervisord-api.conf /root/scripts/supervisord-api.conf
+#COPY ./configfiles/supervisor/supervisord-worker.conf /root/scripts/supervisord-worker.conf
+
+# Add crontab to run backup script at 1AM Local Machine Time
+RUN (crontab -l 2>/dev/null; echo "* * * * * chmod -R 777 /var/www/ainda-api/storage/logs/") | crontab -
+RUN (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/php /var/www/ainda-api/artisan schedule:run >> /dev/null 2>&1") | crontab -
+
+# Clone repo and install dependencies
+RUN chmod 400 /root/.ssh/id_rsa
+RUN ssh-keyscan bitbucket.org > /root/.ssh/known_hosts
+#RUN git clone git@bitbucket.org:xsensors/ainda-api-laravel8.git -b stage ainda-api
+RUN git clone git@bitbucket.org:xsensors/ainda-api-laravel8.git -b JENKINSBRANCH ainda-api
+
+# OAUTH public/private files
+ADD ./configfiles/oauth-private.key /var/www/ainda-api/storage/oauth-private.key
+ADD ./configfiles/oauth-public.key /var/www/ainda-api/storage/oauth-public.key
+
+# Composer otmize autoloader:
+RUN composer install --optimize-autoloader --no-dev -d /var/www/ainda-api
+
+# Run setup for production envirment https://laravel.com/docs/8.x/deployment
+RUN php /var/www/ainda-api/artisan config:clear
+RUN php /var/www/ainda-api/artisan config:cache
+RUN php /var/www/ainda-api/artisan route:cache
+RUN php /var/www/ainda-api/artisan view:cache
+
+# Set user folder
+RUN chown -R www-data:root /var/www/ainda-api
+RUN chmod -R 755 /var/www/ainda-api/storage
+RUN chmod -R 755 /var/www/ainda-api/bootstrap
+
+# Clean packages
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Ports
+EXPOSE 80 443
+
+#ENTRYPOINT [ "/root/scripts/docker-script-startup.sh" ]
+
+CMD ["/usr/bin/supervisord"]

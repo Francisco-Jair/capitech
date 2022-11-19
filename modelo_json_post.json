@@ -1,0 +1,48 @@
+{
+  "categorias": [
+    {
+      "cursos": [
+        {
+          "id": 3,
+          "nome": "MÓDULO I - DESENVOLVIMENTO INFANTIL",
+          "descricao": "",
+          "turmas": [
+            {
+              "id": 1,
+              "nome": "Turma A",
+              "data": "2016-11-12",
+              "alunos": [
+                {
+                  "id": 712,
+                  "nome": "Abilene Monteiro Barros",
+                  "email": "abilenebarros@gmail.com",
+                  "telefone": "(99)981383342",
+                  "presente_m": "S",
+                  "presente_t": "S"
+                },
+                {
+                  "id": 719,
+                  "nome": "Ana Lucia Vilanova de França",
+                  "email": "739.049.453-00@sem.email",
+                  "telefone": "",
+                  "presente_m": "S",
+                  "presente_t": "S"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "descricao": "",
+      "id": 1,
+      "nome": "AVA - INFATEC"
+    }
+  ],
+  "email": "professor1@hotmail.com",
+  "id": 43,
+  "firstname": "Professor 1",
+  "senha": "1234",
+  "lastname": "Professor 1",
+  "phone1": "",
+  "username": "professor1"
+}

@@ -1,0 +1,32 @@
+select * from mdl_user;
+select * from matriculas where matriculas.archetype='student' group by matriculas.user_id ;
+select * from alunos;
+select * from alunos where email like '@sem.email' or username like '000000%';
+
+
+
+
+ACESSOS DOS PROFESSORES:
+
+- Deys Araújo Santana             00098279351
+- Ednardo Gonzaga do Monti        07575842764
+- Heloísa Cardoso Varão Santos    04483103334
+- Kate Lis Varão Santos           76570045334
+- Maria Eliane Pereira            72274409315
+- Marioneide Vieira Lima          75801035320
+- Samuel Mendonça Fagundes        09524400758
+
+Total de cursistas encontrados no PEGE - 189
+Total de cursistas NÃO encontrados no PEGE - 109
+Total de cursistas inseridos no CAPtec - 298
+
+
+
+FAZER/REVER
+
+1 - Relação dos alunos com email ou cpf pendente de atualização (select * from alunos where email like '@sem.email' or username like '000000%';)
+2 - Relação de alunos por turma - Está trazendo relação errada (select * from matriculas where matriculas.role = 'turmabcaxias2016' group by matriculas.user_id; http://sistemacaptec.com.br/gestor/relatorios_de_aluno_por_turma)
+3 - Marcar Frequencia no Aluno  - Está trazendo relação errada (select * from matriculas where matriculas.role = 'turmabcaxias2016' group by matriculas.user_id; http://sistemacaptec.com.br/gestor/aulas/2/frequencia)
+4 - As datas das aulas no site estão erradas!
+5 - Fazer integração na API para que o envio de SMS monte a mensagem de acordo com  -> select * from configuracoes where chave = 'sms_envio'
+6 - Fazer os 3 relatórios que montamos no quadro da INFATEC

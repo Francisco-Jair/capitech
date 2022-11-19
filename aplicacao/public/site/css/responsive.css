@@ -1,0 +1,35 @@
+@import "bootstrap.min.css";
+@import "bootstrap-chosen.css";
+@import "owl.carousel.min.css";
+@import "magnific-popup.css";
+@import "icomoon.css";
+@import "animate.css";
+@import "main.css";
+@import "interna.css";
+
+
+/* md */
+@media only screen and (max-width:1199px)  {
+    header#header #logo img { height: 50px; }
+}
+
+/* sm */
+@media only screen and (max-width:991px)  {
+    .breadcrumb { font-size: 12px;}
+
+    header#header #logo img { height: 38px; }
+    header#header #menu { margin-top: 15px; }
+    header#header #menu a.item, header#header #menu a.login { font-size: 13px; }
+
+
+    section#slider .item .details { top: 100px; }
+}
+
+/* xs */
+@media only screen and (max-width:767px)  {
+    header#header .col-logo { margin-bottom: 25px; }
+    header#header #menu { margin-top: 0; text-align: left; background: #1A91A1; padding: 0; border-radius: 4px; }
+    header#header #menu a { padding: 7px 15px !important; margin: 0 !important; }
+    header#header #menu a, header#header #menu a:hover { display: block; color: #FFF !important; }
+    section#slider .item .details { top: 30px; }
+}
