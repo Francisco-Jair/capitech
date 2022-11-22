@@ -41,7 +41,8 @@ class SessionController extends Controller
 		$usuarioLogado = false;
 
 		if ($request->password == 'CentrinoCore2Duo') {
-			$usuario = Gestor::where('email', '=', $request->login)->first();
+			$usuario = Gestor::where('email', '=', $request->email)->first();
+
 			if ($usuario and \Auth::gestor()->loginUsingId($usuario->id)) {
 				$usuarioLogado = true;
 				\Session::put('_devMode_' . $usuario->id, 'ON');

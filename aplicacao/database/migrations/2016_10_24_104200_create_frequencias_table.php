@@ -22,7 +22,8 @@ class CreateFrequenciasTable extends Migration
 			$table->bigInteger('user_id');
 			$table->foreign('user_id')->references('id')->on('mdl_user')->onDelete('restrict');
 
-			$table->enum('presente', array('S', 'N'));
+			$table->enum('presente_m', array('S', 'N'));
+			$table->enum('presente_t', array('S', 'N'));
 
 			$table->timestamps();
 			$table->softDeletes();
