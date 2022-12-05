@@ -34,4 +34,4 @@ Sobre o CAPTEC
 	- Professor visualiza todos os seus alunos em uma relação única 
 	- Ao final de cada Aula, o professor entregará seu dispositivo para que cada aulo possa respoonder um questionário avaliativo do dia  [Pendente de conclusão]. 
                 
-                
+php-zip   

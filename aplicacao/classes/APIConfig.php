@@ -10,7 +10,7 @@ abstract class APIConfig
 {
 
 	public $baseUrl = '/webservice/rest/server.php';
-	public $token = '?wstoken=d307ba34efa536a9227afd353af18112';
+	public $token = '?wstoken=f490ba2efd3087bfb3d089f5f9be5f08';
 	public $format = '&moodlewsrestformat=json';
 	public $function = '';
 

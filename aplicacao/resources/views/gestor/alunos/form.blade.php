@@ -337,11 +337,11 @@
     @section('scripts')
             <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    @if( isset($item) )
+    {{-- @if( isset($item) )
         {!! JsValidator::formRequest('App\Http\Requests\AlunoRequestUpdate') !!}
     @else
         {!! JsValidator::formRequest('App\Http\Requests\AlunoRequest') !!}
-    @endif
+    @endif --}}
     <script type="text/javascript">
         $(document).ready(function () {
             /*

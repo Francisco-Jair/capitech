@@ -7,9 +7,12 @@ $CFG = new stdClass();
 $CFG->dbtype = 'mysqli';
 $CFG->dblibrary = 'native';
 $CFG->dbhost = 'localhost';
-$CFG->dbname = 'captec_caxias';
-$CFG->dbuser = 'captec_caxias';
-$CFG->dbpass = '5iN?=Z(yuO.M';
+$CFG->dbname = 'capacitacoes';
+$CFG->dbuser = 'root';
+$CFG->dbpass = '123456';
+#$CFG->dbname = 'captec_caxias';
+#$CFG->dbuser = 'captec_caxias';
+#$CFG->dbpass = '5iN?=Z(yuO.M';
 $CFG->prefix = 'mdl_';
 $CFG->dboptions = array(
 	'dbpersist' => 0,
@@ -17,7 +20,9 @@ $CFG->dboptions = array(
 	'dbsocket' => '',
 );
 
-$CFG->wwwroot = 'http://ava.sistemacaptec.com.br';
+
+$CFG->wwwroot = 'http://www.captecmoodle.com.br';
+
 $CFG->dataroot = __DIR__ . '/../moodledata/';
 $CFG->admin = 'admin';
 

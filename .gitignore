@@ -51,3 +51,4 @@ moodledata
 moodle/config.php
 .idea/
 aplicacao/public/certificados/*
+moodle/node_modules/
