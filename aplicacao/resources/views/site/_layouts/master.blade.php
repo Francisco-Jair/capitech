@@ -57,7 +57,7 @@
                     <span class="separator hidden-xs"></span>
                     <a href="{{ url('gestor') }}" class="login"><span
                                 class="glyphicon glyphicon-cog"></span> Gestor</a>
-                    <a href="http://ava.sistemacaptec.com.br" class="login"><span
+                    <a href="http://www.captecmoodle.com.br" class="login"><span
                                 class="glyphicon glyphicon-user"></span> Login</a>
 
                     <a href="{{ route('site.duvidas') }}" class="login"><span

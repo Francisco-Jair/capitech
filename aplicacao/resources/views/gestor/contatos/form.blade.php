@@ -253,6 +253,6 @@
 
 @section('scripts')
     <!-- Laravel Javascript Validation -->
-    <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\ContatoRequest') !!}
+    {{-- <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+    {!! JsValidator::formRequest('App\Http\Requests\ContatoRequest') !!} --}}
 @endsection
