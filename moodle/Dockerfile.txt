@@ -1,0 +1,9 @@
+FROM php:5.6-apache
+
+# config for listen ip
+# RUN sed -i -e 's/Listen 80/Listen 80\nServerName localhost/' /etc/apache2/ports.conf
+
+
+# Copy repository files to raiz
+COPY . /var/www/html/
+# LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php

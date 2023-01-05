@@ -1,5 +1,6 @@
 FROM --platform= ubuntu:18.04 as phpbase
 
+
 ARG PHP_VERSION=5.6
 SHELL [ "/bin/bash", "-c" ]
 ENV DEBIAN_FRONTEND=noninteractive
@@ -47,23 +48,29 @@ RUN apt-get install -y software-properties-common locales gnupg
 RUN apt-get install -y php${PHP_VERSION}-xml php${PHP_VERSION}-mbstring php${PHP_VERSION}-gd php${PHP_VERSION}-curl
 
 RUN apt-get install php5.6-mysql
+RUN apt-get install php5.6-zip
 
-# Set working directory on /var/www
-WORKDIR /var/www/captech
-# Copy repository files to /var/www/captech
-COPY . /var/www/captech
 
-# Install driver database
-# RUN apt-get install -y nano
+# Config apache
+RUN apt-get install -y apache2
+RUN apt-get install -y apt-utils
+RUN apt-get install -y libapache2-mod-php5.6
 
-# porta
-# EXPOSE 8000
-RUN composer clear-cache
-RUN composer update
-RUN composer install
 
-# Provide bash as default shell
-CMD ["/bin/bash"]
+# RUN mkdir /var/moodledata
+COPY docker/apache-site.conf /etc/apache2/sites-available/apache-site.conf
 
-# RUN composer update
-# RUN php artisan serve
+
+# set path
+RUN rm /var/www/html/index.html
+RUN mkdir /var/moodledat
+RUN mkdir /var/www/moodledata
+
+COPY . /var/www/html/
+
+RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/moodledat
+RUN chown -R www-data:www-data /var/www/moodledata
+
+
+CMD apachectl -D FOREGROUND

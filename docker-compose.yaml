@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+
+  captech:
+    container_name: captech_app
+    build: ./aplicacao
+    command: /bin/bash -c "php artisan serve --host 0.0.0.0"
+    # command: /bin/bash -c "php artisan serve"
+    ports:
+      - 8000:8000
+    restart: always
+    depends_on:
+      - db
+  
+  db:
+    container_name: banco_do_captech
+    platform: linux/amd64
+    image: mysql:5.7-debian
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - my-db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'capacitacoes'
+      # MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'root'
+      MYSQL_ROOT_PASSWORD: 'root'
+
+  phpmyadmin:
+    container_name: adm_banco
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+    depends_on:
+      - db
+
+  moodle:
+    container_name: apache_moodle
+    build: ./moodle
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+      - "443:443"
+
+
+
+volumes:
+  my-db:
